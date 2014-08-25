@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Calculator</title>
+<style>
+#calculator {
+  position: absolute;
+  top: 20%;
+  left: 30%;
+}
+.num {
+  font-size: 20px;
+  height: 70px;
+  width: 70px;
+  background-color: #7B68EE;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: verdana;
+}
+.op {
+  font-size: 20px;
+  height: 70px;
+  width: 70px;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: silver;
+  font-family: verdana;
+  color: white;
+}
+#number {
+  background-color: white;
+  text-align: right;
+  font-size: 30px;
+  height: 70px;
+  width: 360px;
+  border-style: hidden;
+  font-family: verdana;
+}
+
+#equal {
+  background-color: green;
+  color: white;
+}
+h3 {
+  font-family: verdana;
+  color: blue;
+  font-size: 30px;
+}
+#back,#clear{
+  background-color: red;
+}
+</style>
+<script src="functions.js"></script>
+</head>
+<body>
+
+<center><h3>Calculator<br />by Mahammad</h3></center>
+<div id="calculator">
+<input type="text" id="number" value="0" disabled>
+<table id="calc">
+<tr>
+<td><input type="button" value="exp" onclick="expo()" class="op"></td>
+<td><input type="button" value="e" onclick="getEuler()" class="op"></td>
+<td><input type="button" value="&#960" onclick="getPi()" class="op"></td>
+<td><input type="button" value="&#8730" onclick="squareRoot()" class="op"></td>
+<td><input type="button" id="clear" value="C" onclick="clearAll()" class="op"></td>
+</tr>
+<tr>
+<td><input type="button" value="ln" onclick="natLog()" class="op"></td>
+<td><input type="button" id="seven" value="7" onclick="put(7)" class="num"></td>
+<td><input type="button" id="eight" value="8" onclick="put(8)" class="num"></td>
+<td><input type="button" id="nine" value="9" onclick="put(9)" class="num"></td>
+<td><input type="button" id="divd" value="/" onclick="fdivd()" class="op"></td>
+</tr>
+<tr>
+<td><input type="button" value="log" onclick="log10()" class="op"></td>
+<td><input type="button" id="four" value="4" onclick="put(4)" class="num"></td>
+<td><input type="button" id="five" value="5" onclick="put(5)" class="num"></td>
+<td><input type="button" id="six" value="6" onclick="put(6)" class="num"></td>
+<td><input type="button" id="mult" value="*" onclick="fmult()" class="op"></td>
+</tr>
+<tr>
+<td><input type="button" value="x^y" onclick="power()" class="op"></td>
+<td><input type="button" id="one" value="1" onclick="put(1)" class="num"></td>
+<td><input type="button" id="two" value="2" onclick="put(2)" class="num"></td>
+<td><input type="button" id="three" value="3" onclick="put(3)" class="num"></td>
+<td><input type="button" id="sub" value="-" onclick="fsub()" class="op"></td>
+</tr>
+<tr>
+<td><input type="button" id="back" value="&#8592" onclick="backspace()" class="op"></td>
+<td><input type="button" id="zero" value="0" onclick="put(0)" class="num"></td>
+<td><input type="button" id="dot" value="." onclick="put(10)" class="num"></td>
+<td><input type="button" id="equal" value="=" onclick="fequal()" class="op"></td>
+<td><input type="button" id="add" value="+" onclick="fadd()" class="op"></td>
+</tr>
+</table>
+</div>
+
+
+</body>
+</html>

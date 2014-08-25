@@ -1,0 +1,61 @@
+#gameboard {
+  width: 750px;
+  height: 500px;
+  position: absolute;
+  border: solid;
+  left: 300px;
+  top: 100px;
+}
+#moveboard {
+  height: 450px;
+  width: 600px;
+  position: relative;
+  border: solid;
+  left: 0px;
+  top: 0px;
+}
+#gametitle {
+  position: absolute;
+  left: 630px;
+  top: 10px;
+}
+#desc {
+  position: absolute;
+  left: 630px;
+  top: 50px;
+}
+#tankbody {
+  height: 50px;
+  width: 50px;
+  border: solid;
+}
+#tank {
+  position: absolute;
+  bottom: 0px;
+  left: 250px;
+}
+#bullet {
+  height: 5px;
+  width: 5px;
+  position: absolute;
+  bottom: 55px;
+  left: 22px;
+  border: solid;
+}
+#shot {
+  position: relative;
+  bottom: 0px;
+  left: 0px;
+  border: solid;
+}
+#ballboard {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.ball {
+  position: relative;
+  border: solid;
+  width: 30px;
+  height: 30px;
+}
