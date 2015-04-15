@@ -1,0 +1,23 @@
+body {
+    font-family: sans-serif;
+}
+
+#app {
+    position: relative;
+    left: 500px;
+    top: 200px;
+}
+
+.option_sel, .item_sel {
+    background-color: white;
+    height: 30px;
+    width: 100px;
+}
+
+.add_btn {
+    background-color: white;
+    height: 30px;
+    width: 50px;
+    border-width: thin;
+    cursor: pointer;
+}
