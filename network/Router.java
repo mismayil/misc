@@ -9,6 +9,7 @@ public class Router {
 	public static final int NBR_ROUTER = 5;
 	public static final int PKT_SIZE = 100;
 	public static final int INF = Integer.MAX_VALUE;
+	public static final int TIMEOUT = 30000;
 	
 	private ArrayList<RIBEntry> RIB = new ArrayList<RIBEntry>(NBR_ROUTER);
 	private ArrayList<TopoEntry> TOPODB = new ArrayList<TopoEntry>(NBR_ROUTER);
@@ -16,7 +17,6 @@ public class Router {
 	private int routerID;
 	private int routerPort;
 	private FileWriter routerFile;
-	private DatagramSocket routerSocket;
 	
 	public Router(int routerID, int routerPort) throws IOException {
 		this.routerID = routerID;
@@ -38,6 +38,11 @@ public class Router {
 		
 		try {
 			
+			if (args.length != 4) {
+				System.out.println("command usage: java Router <router_id> <nse_host> <nse_port> <router_port>");
+				return;
+			}
+
 			int id = Integer.parseInt(args[0]);
 			String nseHost = args[1];
 			int nsePort = Integer.parseInt(args[2]);
@@ -58,26 +63,9 @@ public class Router {
 		
 		try {
 			
-			// set timeout
-			Timer timer = new Timer();
-			timer.schedule(new TimerTask() {
-				public void run() {
-					logDB();
-					
-					try {
-						routerFile.close();
-						routerSocket.close();
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-
-					System.exit(0);
-				}
-			}, 40000);
-			
 			InetAddress nseIPAddress = InetAddress.getByName(nseHost);
 			
-			routerSocket = new DatagramSocket(routerPort);
+			DatagramSocket routerSocket = new DatagramSocket(routerPort);
 			
 			byte[] sendData, receiveData;
 			DatagramPacket sendPacket, receivePacket;
@@ -94,6 +82,22 @@ public class Router {
 			receiveData = new byte[PKT_SIZE];
 			receivePacket = new DatagramPacket(receiveData, receiveData.length);
 			routerSocket.receive(receivePacket);
+
+			// set timeout
+			Timer timer = new Timer();
+			timer.schedule(new TimerTask() {
+				public void run() {
+					logDB();
+					
+					try {
+						routerFile.close();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+
+					System.exit(0);
+				}
+			}, TIMEOUT);
 
 			CIRCUIT_DB circuitDB = CIRCUIT_DB.parseUDPdata(receivePacket.getData());
 			
